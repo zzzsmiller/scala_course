@@ -1,0 +1,14 @@
+package common
+
+object SheetCommon {
+  val per = 100
+  val weeks = 7
+  
+  def total(weekTotal: Array[Double]) : Double = {
+			for (wt : weekTotal) {
+			
+			}
+		
+		  x
+  }
+}

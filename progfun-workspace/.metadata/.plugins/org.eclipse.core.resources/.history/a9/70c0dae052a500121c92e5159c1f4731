@@ -1,0 +1,11 @@
+package common
+
+object SheetCommon {
+  val per = 100
+  val weeks = 7
+  
+  def total(x: Double) : Double = {
+		
+		  x
+  }
+}

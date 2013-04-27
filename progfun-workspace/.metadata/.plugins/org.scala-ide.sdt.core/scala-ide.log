@@ -1,0 +1,71 @@
+2013-04-07 20:14:30,961 ERROR [Worker-0] - System.err - SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2013-04-07 20:14:30,962 ERROR [Worker-0] - System.err - SLF4J: Defaulting to no-operation (NOP) logger implementation
+2013-04-07 20:14:30,962 ERROR [Worker-0] - System.err - SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2013-04-08 02:54:39,580 ERROR [Worker-35] - System.err - SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2013-04-08 02:54:39,582 ERROR [Worker-35] - System.err - SLF4J: Defaulting to no-operation (NOP) logger implementation
+2013-04-08 02:54:39,582 ERROR [Worker-35] - System.err - SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2013-04-08 03:34:13,811 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - java.lang.Error
+2013-04-08 03:34:13,812 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.reflect.internal.Types$AsSeenFromMap.instParam$1(Types.scala:4579)
+2013-04-08 03:34:13,812 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.reflect.internal.Types$AsSeenFromMap.toInstance$1(Types.scala:4602)
+2013-04-08 03:34:13,812 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.reflect.internal.Types$AsSeenFromMap.apply(Types.scala:4620)
+2013-04-08 03:34:13,812 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.reflect.internal.Types$AsSeenFromMap.apply(Types.scala:4484)
+2013-04-08 03:34:13,812 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.collection.immutable.List.loop$1(List.scala:170)
+2013-04-08 03:34:13,812 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.collection.immutable.List.mapConserve(List.scala:186)
+2013-04-08 03:34:13,812 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.reflect.internal.Types$TypeMap.mapOver(Types.scala:4168)
+2013-04-08 03:34:13,812 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.reflect.internal.Types$AsSeenFromMap.apply(Types.scala:4622)
+2013-04-08 03:34:13,812 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.reflect.internal.Types$TypeMap.mapOver(Types.scala:4181)
+2013-04-08 03:34:13,812 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.reflect.internal.Types$AsSeenFromMap.apply(Types.scala:4622)
+2013-04-08 03:34:13,812 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.reflect.internal.Types$Type.asSeenFrom(Types.scala:754)
+2013-04-08 03:34:13,812 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.reflect.internal.Types$Type.computeMemberType(Types.scala:788)
+2013-04-08 03:34:13,812 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.reflect.internal.Symbols$MethodSymbol.typeAsMemberOf(Symbols.scala:2646)
+2013-04-08 03:34:13,812 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.reflect.internal.Types$Type.memberType(Types.scala:779)
+2013-04-08 03:34:13,812 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.reflect.internal.Symbols$Symbol.scala$reflect$internal$Symbols$Symbol$$qualifies$1(Symbols.scala:2039)
+2013-04-08 03:34:13,813 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.reflect.internal.Symbols$Symbol.matchingSymbol(Symbols.scala:2040)
+2013-04-08 03:34:13,813 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.reflect.internal.Symbols$Symbol.overriddenSymbol(Symbols.scala:2054)
+2013-04-08 03:34:13,813 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.tools.refactoring.analysis.DependentSymbolExpanders$OverridesInClassHierarchy$$anonfun$2.apply(SymbolExpanders.scala:104)
+2013-04-08 03:34:13,813 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.tools.refactoring.analysis.DependentSymbolExpanders$OverridesInClassHierarchy$$anonfun$2.apply(SymbolExpanders.scala:101)
+2013-04-08 03:34:13,813 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+2013-04-08 03:34:13,813 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+2013-04-08 03:34:13,813 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.collection.immutable.List.foreach(List.scala:318)
+2013-04-08 03:34:13,813 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.collection.TraversableLike$class.map(TraversableLike.scala:244)
+2013-04-08 03:34:13,813 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.collection.AbstractTraversable.map(Traversable.scala:105)
+2013-04-08 03:34:13,813 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.tools.refactoring.analysis.DependentSymbolExpanders$OverridesInClassHierarchy$class.expand(SymbolExpanders.scala:101)
+2013-04-08 03:34:13,813 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.tools.refactoring.analysis.GlobalIndexes$GlobalIndex$$anon$1.scala$tools$refactoring$analysis$DependentSymbolExpanders$SameSymbolPosition$$super$expand(GlobalIndexes.scala:24)
+2013-04-08 03:34:13,813 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.tools.refactoring.analysis.DependentSymbolExpanders$SameSymbolPosition$class.expand(SymbolExpanders.scala:133)
+2013-04-08 03:34:13,813 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.tools.refactoring.analysis.GlobalIndexes$GlobalIndex$$anon$1.expand(GlobalIndexes.scala:24)
+2013-04-08 03:34:13,813 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.tools.refactoring.analysis.GlobalIndexes$GlobalIndex$$anonfun$expandSymbols$1$1.apply(GlobalIndexes.scala:66)
+2013-04-08 03:34:13,813 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.tools.refactoring.analysis.GlobalIndexes$GlobalIndex$$anonfun$expandSymbols$1$1.apply(GlobalIndexes.scala:66)
+2013-04-08 03:34:13,813 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.collection.TraversableLike$$anonfun$flatMap$1.apply(TraversableLike.scala:251)
+2013-04-08 03:34:13,813 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.collection.TraversableLike$$anonfun$flatMap$1.apply(TraversableLike.scala:251)
+2013-04-08 03:34:13,813 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.collection.immutable.List.foreach(List.scala:318)
+2013-04-08 03:34:13,813 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.collection.TraversableLike$class.flatMap(TraversableLike.scala:251)
+2013-04-08 03:34:13,813 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.collection.AbstractTraversable.flatMap(Traversable.scala:105)
+2013-04-08 03:34:13,813 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.tools.refactoring.analysis.GlobalIndexes$GlobalIndex$class.expandSymbols$1(GlobalIndexes.scala:66)
+2013-04-08 03:34:13,813 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.tools.refactoring.analysis.GlobalIndexes$GlobalIndex$class.expandSymbol(GlobalIndexes.scala:69)
+2013-04-08 03:34:13,813 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.tools.refactoring.analysis.GlobalIndexes$GlobalIndex$$anon$1.expandSymbol(GlobalIndexes.scala:24)
+2013-04-08 03:34:13,814 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.tools.refactoring.analysis.GlobalIndexes$GlobalIndex$class.occurences(GlobalIndexes.scala:73)
+2013-04-08 03:34:13,814 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.tools.refactoring.analysis.GlobalIndexes$GlobalIndex$$anon$1.occurences(GlobalIndexes.scala:24)
+2013-04-08 03:34:13,814 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.tools.refactoring.implementations.Rename.perform(Rename.scala:41)
+2013-04-08 03:34:13,814 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.tools.refactoring.implementations.Rename.perform(Rename.scala:13)
+2013-04-08 03:34:13,814 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.tools.eclipse.refactoring.ScalaIdeRefactoring$$anonfun$5$$anonfun$apply$7.apply(ScalaIdeRefactoring.scala:158)
+2013-04-08 03:34:13,814 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.tools.eclipse.refactoring.ScalaIdeRefactoring$$anonfun$5$$anonfun$apply$7.apply(ScalaIdeRefactoring.scala:157)
+2013-04-08 03:34:13,814 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.tools.nsc.util.InterruptReq.execute(InterruptReq.scala:26)
+2013-04-08 03:34:13,814 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.tools.nsc.interactive.Global.pollForWork(Global.scala:340)
+2013-04-08 03:34:13,814 ERROR [Scala Presentation Compiler [progfun-recfun]] - System.err - at scala.tools.nsc.interactive.PresentationCompilerThread.run(PresentationCompilerThread.scala:22)
+2013-04-08 13:41:44,206  WARN [ModalContext] - ImplicitHighlightingPresenter - Timeout while waiting for `askLoadedTyped` during implicit highlighting.
+2013-04-08 17:13:52,350 ERROR [Worker-12] - System.err - SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2013-04-08 17:13:52,415 ERROR [Worker-12] - System.err - SLF4J: Defaulting to no-operation (NOP) logger implementation
+2013-04-08 17:13:52,415 ERROR [Worker-12] - System.err - SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2013-04-09 16:03:37,147 ERROR [Worker-6] - System.err - SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2013-04-09 16:03:37,154 ERROR [Worker-6] - System.err - SLF4J: Defaulting to no-operation (NOP) logger implementation
+2013-04-09 16:03:37,154 ERROR [Worker-6] - System.err - SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2013-04-09 18:41:43,589 ERROR [Worker-10] - System.err - SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2013-04-09 18:41:43,612 ERROR [Worker-10] - System.err - SLF4J: Defaulting to no-operation (NOP) logger implementation
+2013-04-09 18:41:43,612 ERROR [Worker-10] - System.err - SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2013-04-10 19:45:35,160 ERROR [main] - org.scala-ide.sdt.core - org.scala-ide.sdt.core - org.scala-ide.sdt.core - 0 - Java Model Exception: Java Model Status [/ProgFun/main/scala/week02/TailRecursive.scala already exists in target]
+2013-04-10 20:00:26,080 ERROR [Worker-11] - System.err - SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2013-04-10 20:00:26,088 ERROR [Worker-11] - System.err - SLF4J: Defaulting to no-operation (NOP) logger implementation
+2013-04-10 20:00:26,088 ERROR [Worker-11] - System.err - SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2013-04-15 00:29:18,574 ERROR [Worker-24] - System.err - SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2013-04-15 00:29:18,582 ERROR [Worker-24] - System.err - SLF4J: Defaulting to no-operation (NOP) logger implementation
+2013-04-15 00:29:18,582 ERROR [Worker-24] - System.err - SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.

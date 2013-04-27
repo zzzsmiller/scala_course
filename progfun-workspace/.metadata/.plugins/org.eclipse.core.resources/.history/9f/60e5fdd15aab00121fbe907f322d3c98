@@ -1,0 +1,38 @@
+package week03
+
+object Sheet_IntSet {
+
+  abstract class IntSet {
+		def incl(x: Int): IntSet
+		def contains(x: Int): Boolean
+		def union(other: IntSet): IntSet
+  }
+  
+  object Empty extends IntSet {
+  	def incl(x: Int) = new NonEmpty(x, Empty, Empty)
+  	
+  	def contains(x: Int) = false
+  	
+  	def union(other: IntSet) = other
+  }
+  
+  class NonEmpty(elem: Int, left: IntSet, right: IntSet) extends IntSet {
+  	def contains(x: Int) = {
+  		if (x < elem) left contains x
+  		else if (x > elem) right contains(x)
+  		else if (x == elem) true
+  		else false
+  	}
+  	
+  	def incl(x: Int) = {
+  		if (x < elem) left.incl(x)
+  		else if (x > elem) right.incl(x)
+  		else this
+  	}
+  	
+  	def union(other: IntSet) = {
+  		var unionSet: IntSet = Empty
+  		if (!other.contains(elem)) unionSet = other.incl(elem)
+  	}
+  }
+}

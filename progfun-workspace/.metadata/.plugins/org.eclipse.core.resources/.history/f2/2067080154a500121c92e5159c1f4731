@@ -1,0 +1,16 @@
+package common
+
+object SheetCommon {
+  val per = 100
+  val weeks = 7
+  
+  def total(weekTotal: Array[Double]): Double = {
+			def sum(index: Int): Double = {
+				if (index > 7) 0
+				else weekTotal(index) + sum(index + 1)
+			}
+			sum(0)
+  }
+  
+  total({6.0, 9.67})
+}

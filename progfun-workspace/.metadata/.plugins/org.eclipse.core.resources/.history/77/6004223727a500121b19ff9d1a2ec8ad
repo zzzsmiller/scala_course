@@ -1,0 +1,20 @@
+package week02
+
+object Sheet_Rational {
+  println("Welcome to the Scala worksheet")
+}
+
+class Rational(x: Int, y: Int) {
+	val numer = x
+	val denom = y
+	
+	override def toString = numer + "/" + denom
+	
+	def sum(that: Rational) = new Rational(
+		numer * that.denom + that.numer * denom,
+		denom * that.denom)
+	
+	def neg = new Rational(-numer, denom)
+	
+	def sub(that: Rational) = sum(that.neg)
+}
