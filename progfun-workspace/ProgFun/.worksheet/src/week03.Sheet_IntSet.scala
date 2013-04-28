@@ -46,11 +46,12 @@ class NonEmpty(elem: Int, left: IntSet, right: IntSet) extends IntSet {
   }
 
   def union(other: IntSet) = {
-    var unionSet: IntSet = other
+    /*var unionSet: IntSet = other
     if (!other.contains(elem)) unionSet = other.incl(elem)
     unionSet = left union unionSet
     unionSet = right union unionSet
-    unionSet
+    unionSet*/
+    ((left union right) union other) incl elem
   }
 
   override def toString() = "{" + left + elem + right + "}"

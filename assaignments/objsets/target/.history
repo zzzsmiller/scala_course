@@ -1,0 +1,14 @@
+compile
+test
+styleCheck
+run
+test
+run
+checkStyle
+styleCheck
+compile
+test
+styleCheck
+run
+submit musatovil@gmail.com bAgBnM5E2b
+exit

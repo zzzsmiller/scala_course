@@ -1,0 +1,5 @@
+package week03
+
+object Sheet_traits {
+  println("Welcome to the Scala worksheet")       //> Welcome to the Scala worksheet
+}
