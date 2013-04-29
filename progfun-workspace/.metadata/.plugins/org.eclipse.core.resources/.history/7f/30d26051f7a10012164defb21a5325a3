@@ -1,7 +1,0 @@
-package week02
-
-object TailRecursive {
-
-  def main(args: Array[String]): Unit = {}
-
-}

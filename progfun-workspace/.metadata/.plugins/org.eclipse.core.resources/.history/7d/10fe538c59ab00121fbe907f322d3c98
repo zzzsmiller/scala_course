@@ -1,5 +1,0 @@
-package week03
-
-object Sheet_IntSet {
-  println("Welcome to the Scala worksheet")       //> Welcome to the Scala worksheet
-}

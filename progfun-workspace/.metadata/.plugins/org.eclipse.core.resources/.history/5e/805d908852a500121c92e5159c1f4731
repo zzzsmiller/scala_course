@@ -1,5 +1,0 @@
-package common
-
-object Sheet_common {
-  val d = 2                                       //> d  : Int = 2
-}
