@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry excluding="scala/" kind="src" path="main"/>
 	<classpathentry excluding="week01/" kind="src" path="main/scala"/>
 	<classpathentry kind="src" path="test/scala"/>
 	<classpathentry kind="con" path="org.scala-ide.sdt.launching.SCALA_CONTAINER"/>
