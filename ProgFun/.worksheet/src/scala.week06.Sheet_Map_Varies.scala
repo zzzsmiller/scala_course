@@ -7,13 +7,12 @@ object Sheet_Map_Varies {
   val x = List(('a', 1), ('d', 1), ('r', 2), ('l', 1), ('r', 1), ('r', 3));System.out.println("""x  : List[(Char, Int)] = """ + $show(x ));$skip(25); 
   val y = List(('r', 1));System.out.println("""y  : List[(Char, Int)] = """ + $show(y ));$skip(25); 
 
-  val z = List(1, 2, 0)
-,
+  val z = List(1, 2, 0);System.out.println("""z  : List[Int] = """ + $show(z ));$skip(112); 
 
   def mapper(x: List[(Char, Int)]) =
-    x groupBy (el => el._1) map (y => (y._1, (y._2 map (z => z._2)).max));System.out.println("""z  : List[Int] = """ + $show(z ));$skip(137); 
-  val mapx = mapper(x);System.out.println("""mapx  : <error> = """ + $show(mapx ));$skip(23); 
-  val mapy = mapper(y);System.out.println("""mapy  : <error> = """ + $show(mapy ));$skip(113); 
+    x groupBy (el => el._1) map (y => (y._1, (y._2 map (z => z._2)).max));System.out.println("""mapper: (x: List[(Char, Int)])scala.collection.immutable.Map[Char,Int]""");$skip(23); 
+  val mapx = mapper(x);System.out.println("""mapx  : scala.collection.immutable.Map[Char,Int] = """ + $show(mapx ));$skip(23); 
+  val mapy = mapper(y);System.out.println("""mapy  : scala.collection.immutable.Map[Char,Int] = """ + $show(mapy ));$skip(113); 
 
 	def occMapper(occ: Occurrences, m: (Char, Int)): Occurrences =
 		(m._1, m._2 - mapy.getOrElse(m._1, 0)) :: occ;System.out.println("""occMapper: (occ: scala.week06.Sheet_Map_Varies.Occurrences, m: (Char, Int))scala.week06.Sheet_Map_Varies.Occurrences""");$skip(115); 

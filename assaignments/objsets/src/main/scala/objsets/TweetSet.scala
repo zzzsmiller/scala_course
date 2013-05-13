@@ -2,6 +2,7 @@ package objsets
 
 import common._
 import TweetReader._
+import scala.language.postfixOps
 
 /**
  * A class to represent tweets.

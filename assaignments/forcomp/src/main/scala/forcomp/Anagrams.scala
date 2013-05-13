@@ -1,6 +1,7 @@
 package forcomp
 
 import common._
+import scala.language.postfixOps
 
 object Anagrams {
 
@@ -68,6 +69,7 @@ object Anagrams {
       .map(w => w -> wordOccurrences(w))
       .groupBy((t: (Word, Occurrences)) => t._2)
       .mapValues[List[Word]](l => l map (t => t._1))
+      .withDefaultValue(List())
 
   /** Returns all the anagrams of a given word. */
   def wordAnagrams(word: Word): List[Word] =
@@ -100,12 +102,14 @@ object Anagrams {
    *  in the example above could have been displayed in some other order.
    */
   def combinations(occurrences: Occurrences): List[Occurrences] = {
+    def concat[T](x: List[T], y: List[T]): List[T] = (x foldRight y)(_ :: _)
+
     def elemComb(x: (Char, Int)): List[Occurrences] =
       (for (i <- 1 to x._2) yield (x._1, i) :: Nil).toList
 
     def mixComb(occ: List[Occurrences], occ1: List[Occurrences]): List[Occurrences] = {
       occ flatMap (x =>
-        occ1 map (y => y ++ x))
+        occ1 map (y => concat(y, x)))
     }
 
     def comb(occ: Occurrences): List[Occurrences] = occ match {
@@ -113,7 +117,7 @@ object Anagrams {
       case x :: xs => {
         val elc = elemComb(x)
         val rest = comb(xs)
-        rest ++ mixComb(elc, rest)
+        concat(rest, mixComb(elc, rest))
       }
     }
 
@@ -132,8 +136,19 @@ object Anagrams {
    *  and has no zero-entries.
    */
   def subtract(x: Occurrences, y: Occurrences): Occurrences = {
-    
-    
+    def mapper(x: List[(Char, Int)]) =
+      x groupBy (el => el._1) map (y => (y._1, (y._2 map (z => z._2)).max))
+
+    def occMapper(occ: Occurrences, m: (Char, Int)): Occurrences =
+      (m._1, m._2 - mapper(y).getOrElse(m._1, 0)) :: occ
+
+    def uncombine(occ: Occurrences): Occurrences =
+      for {
+        t <- occ
+        i <- 1 to t._2
+      } yield (t._1, i)
+
+    uncombine(mapper(x).foldLeft[Occurrences](List())(occMapper)).sorted
   }
 
   /**
@@ -177,6 +192,19 @@ object Anagrams {
    *
    *  Note: There is only one anagram of an empty sentence.
    */
-  def sentenceAnagrams(sentence: Sentence): List[Sentence] = ???
+  def sentenceAnagrams(sentence: Sentence): List[Sentence] = {
+    def loop(occ: Occurrences): Set[Sentence] = {
+      if (occ.isEmpty) Set(Nil)
+      else {
+        for {
+          y <- combinations(occ)
+          w <- dictionaryByOccurrences(y)
+          sent <- loop(subtract(occ, y))
+        } yield w :: sent
+      }.toSet
+    }
+
+    loop(sentenceOccurrences(sentence)).toList
+  }
 
 }
