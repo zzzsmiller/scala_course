@@ -100,12 +100,14 @@ object Anagrams {
    *  in the example above could have been displayed in some other order.
    */
   def combinations(occurrences: Occurrences): List[Occurrences] = {
+    def concat[T](x: List[T], y: List[T]): List[T] = (x foldRight y)(_ :: _)
+
     def elemComb(x: (Char, Int)): List[Occurrences] =
       (for (i <- 1 to x._2) yield (x._1, i) :: Nil).toList
 
     def mixComb(occ: List[Occurrences], occ1: List[Occurrences]): List[Occurrences] = {
       occ flatMap (x =>
-        occ1 map (y => y ++ x))
+        occ1 map (y => concat(y, x)))
     }
 
     def comb(occ: Occurrences): List[Occurrences] = occ match {
@@ -113,7 +115,7 @@ object Anagrams {
       case x :: xs => {
         val elc = elemComb(x)
         val rest = comb(xs)
-        rest ++ mixComb(elc, rest)
+        concat(rest, mixComb(elc, rest))
       }
     }
 
@@ -132,8 +134,19 @@ object Anagrams {
    *  and has no zero-entries.
    */
   def subtract(x: Occurrences, y: Occurrences): Occurrences = {
-    
-    
+    def mapper(x: List[(Char, Int)]) =
+      x groupBy (el => el._1) map (y => (y._1, (y._2 map (z => z._2)).max))
+
+    def occMapper(occ: Occurrences, m: (Char, Int)): Occurrences =
+      (m._1, m._2 - mapper(y).getOrElse(m._1, 0)) :: occ
+
+    def uncombine(occ: Occurrences): Occurrences =
+      for {
+        t <- occ
+        i <- 1 to t._2
+      } yield (t._1, i)
+
+    uncombine(mapper(x).foldLeft[Occurrences](List())(occMapper)).sorted
   }
 
   /**
@@ -177,6 +190,47 @@ object Anagrams {
    *
    *  Note: There is only one anagram of an empty sentence.
    */
-  def sentenceAnagrams(sentence: Sentence): List[Sentence] = ???
+  def sentenceAnagrams(sentence: Sentence): List[Sentence] = {
+    val occurrences = sentenceOccurrences(sentence)
+    
+    def getDictByOcc(occ: Occurrences): Sentence = 
+      dictionaryByOccurrences.getOrElse(occ, Nil)
+
+    def getSentAnag(sentList: List[Sentence], occ: Occurrences): List[Sentence] =
+      occ match {
+        case Nil => Nil
+        case occ => {
+          (for {
+            occ1 <- combinations(occ)
+            if getDictByOcc(occ1) != Nil
+          } yield {
+            val wordList: List[Word] = getDictByOcc(occ1)
+            val sentListR = getSentAnag(sentList, subtract(occ, occ1))
+            for {
+              word <- wordList
+              sent <- sentListR
+              if (word :: sent) != sentence
+            } yield (word :: sent)
+          }).flatten
+
+          /*val wordList: List[Word] = dictionaryByOccurrences.getOrElse(occ, Nil)
+          if (wordList == Nil) Nil
+          else for {
+            sent <- sentList
+            word <- wordList
+            if (word :: sent) != sentence
+          } yield (word :: sent)
+*/
+        }
+      }
+
+    /*for (occ <- combinations(sentenceOccurrences(sentence)))
+      yield getSentAnag(getSentAnag(Nil, subtract(occurrences, occ)), occ)
+*/
+    //      stub
+    Nil
+    
+    getSentAnag(Nil, sentenceOccurrences(sentence))
+  }
 
 }
