@@ -8,4 +8,9 @@ package object common {
     println("Elapsed time: " + (t1 - t0) + "ns")
     result
   }
+  
+  def printList(list: List[Any]): Int = list match {
+    case Nil => { 0}
+    case x :: xs => { println(x); printList(xs); 0}
+  }
 }

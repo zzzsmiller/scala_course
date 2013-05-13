@@ -70,7 +70,7 @@ object Anagrams {
       .mapValues[List[Word]](l => l map (t => t._1))
 
   /** Returns all the anagrams of a given word. */
-  def wordAnagrams(word: Word): List[Word] = 
+  def wordAnagrams(word: Word): List[Word] =
     dictionaryByOccurrences.get(wordOccurrences(word)) match {
       case None => Nil
       case Some(anagrams) => anagrams
@@ -100,28 +100,24 @@ object Anagrams {
    *  in the example above could have been displayed in some other order.
    */
   def combinations(occurrences: Occurrences): List[Occurrences] = {
-    def forComb(tup: (Char, Int), xs: Occurrences): List[Occurrences] = { 
-      (for (j <- 1 to tup._2) 
-        yield { 
-            if (xs == Nil) List(List((tup._1, j)))
-            else {
-              val xsComb = comb(xs)
-              (xsComb map (oc => (tup._1, j) :: oc)) ::: xsComb
-            }
-      }).flatten.toList      
+    def elemComb(x: (Char, Int)): List[Occurrences] =
+      (for (i <- 1 to x._2) yield (x._1, i) :: Nil).toList
+
+    def mixComb(occ: List[Occurrences], occ1: List[Occurrences]): List[Occurrences] = {
+      occ flatMap (x =>
+        occ1 map (y => y ++ x))
     }
-        
+
     def comb(occ: Occurrences): List[Occurrences] = occ match {
       case Nil => List(List())
-      case x :: Nil => forComb(x, Nil)
-      case x :: xs => forComb(x, xs)
-      
+      case x :: xs => {
+        val elc = elemComb(x)
+        val rest = comb(xs)
+        rest ++ mixComb(elc, rest)
+      }
     }
-    
-    comb(occurrences)
-//    (0 until occurrences.length) flatMap (i => {
-//      comb(occurrences(i) :: occurrences.take(i) ::: occurrences.drop(i))
-//    })
+
+    comb(occurrences.reverse)
   }
 
   /**
@@ -135,7 +131,10 @@ object Anagrams {
    *  Note: the resulting value is an occurrence - meaning it is sorted
    *  and has no zero-entries.
    */
-  def subtract(x: Occurrences, y: Occurrences): Occurrences = ???
+  def subtract(x: Occurrences, y: Occurrences): Occurrences = {
+    
+    
+  }
 
   /**
    * Returns a list of all anagram sentences of the given sentence.
