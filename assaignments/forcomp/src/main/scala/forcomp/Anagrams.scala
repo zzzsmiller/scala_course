@@ -1,6 +1,7 @@
 package forcomp
 
 import common._
+import scala.language.postfixOps
 
 object Anagrams {
 
@@ -68,6 +69,7 @@ object Anagrams {
       .map(w => w -> wordOccurrences(w))
       .groupBy((t: (Word, Occurrences)) => t._2)
       .mapValues[List[Word]](l => l map (t => t._1))
+      .withDefaultValue(List())
 
   /** Returns all the anagrams of a given word. */
   def wordAnagrams(word: Word): List[Word] =
@@ -191,46 +193,18 @@ object Anagrams {
    *  Note: There is only one anagram of an empty sentence.
    */
   def sentenceAnagrams(sentence: Sentence): List[Sentence] = {
-    val occurrences = sentenceOccurrences(sentence)
-    
-    def getDictByOcc(occ: Occurrences): Sentence = 
-      dictionaryByOccurrences.getOrElse(occ, Nil)
+    def loop(occ: Occurrences): Set[Sentence] = {
+      if (occ.isEmpty) Set(Nil)
+      else {
+        for {
+          y <- combinations(occ)
+          w <- dictionaryByOccurrences(y)
+          sent <- loop(subtract(occ, y))
+        } yield w :: sent
+      }.toSet
+    }
 
-    def getSentAnag(sentList: List[Sentence], occ: Occurrences): List[Sentence] =
-      occ match {
-        case Nil => Nil
-        case occ => {
-          (for {
-            occ1 <- combinations(occ)
-            if getDictByOcc(occ1) != Nil
-          } yield {
-            val wordList: List[Word] = getDictByOcc(occ1)
-            val sentListR = getSentAnag(sentList, subtract(occ, occ1))
-            for {
-              word <- wordList
-              sent <- sentListR
-              if (word :: sent) != sentence
-            } yield (word :: sent)
-          }).flatten
-
-          /*val wordList: List[Word] = dictionaryByOccurrences.getOrElse(occ, Nil)
-          if (wordList == Nil) Nil
-          else for {
-            sent <- sentList
-            word <- wordList
-            if (word :: sent) != sentence
-          } yield (word :: sent)
-*/
-        }
-      }
-
-    /*for (occ <- combinations(sentenceOccurrences(sentence)))
-      yield getSentAnag(getSentAnag(Nil, subtract(occurrences, occ)), occ)
-*/
-    //      stub
-    Nil
-    
-    getSentAnag(Nil, sentenceOccurrences(sentence))
+    loop(sentenceOccurrences(sentence)).toList
   }
 
 }
