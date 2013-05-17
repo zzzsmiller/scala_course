@@ -2,9 +2,9 @@ package scala.week06
 
 object Sheet_Map_Varies {
 
-  type Occurrences = List[(Char, Int)];import org.scalaide.worksheet.runtime.library.WorksheetSupport._; def main(args: Array[String])=$execute{;$skip(163); 
+  type Occurrences = List[(Char, Int)];import org.scalaide.worksheet.runtime.library.WorksheetSupport._; def main(args: Array[String])=$execute{;$skip(164); 
 
-  val x = List(('a', 1), ('d', 1), ('r', 2), ('l', 1), ('r', 1), ('r', 3));System.out.println("""x  : List[(Char, Int)] = """ + $show(x ));$skip(25); 
+  val x = List(('a', 1), ('d', 1), ('r', 2), ('l', 1), ('r', 1), ('r', 3));System.out.println("""x  : List[(Char, Int)] = """ + $show(x ));$skip(25); ;
   val y = List(('r', 1));System.out.println("""y  : List[(Char, Int)] = """ + $show(y ));$skip(25); 
 
   val z = List(1, 2, 0);System.out.println("""z  : List[Int] = """ + $show(z ));$skip(112); 

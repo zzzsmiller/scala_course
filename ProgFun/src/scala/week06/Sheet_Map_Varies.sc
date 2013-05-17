@@ -4,37 +4,31 @@ object Sheet_Map_Varies {
 
   type Occurrences = List[(Char, Int)]
 
-  val x = List(('a', 1), ('d', 1), ('r', 2), ('l', 1), ('r', 1), ('r', 3))
+  val x = List(('a', 1), ('d', 1), ('r', 2), ('l', 1), ('r', 1), ('r', 3));
                                                   //> x  : List[(Char, Int)] = List((a,1), (d,1), (r,2), (l,1), (r,1), (r,3))
   val y = List(('r', 1))                          //> y  : List[(Char, Int)] = List((r,1))
 
-  val z = List(1, 2, 0)                           //> z  : List[Int] = List(1, 2, 0)
+  val z = List(1, 2, 0)
+,
 
   def mapper(x: List[(Char, Int)]) =
     x groupBy (el => el._1) map (y => (y._1, (y._2 map (z => z._2)).max))
-                                                  //> mapper: (x: List[(Char, Int)])scala.collection.immutable.Map[Char,Int]
-  val mapx = mapper(x)                            //> mapx  : scala.collection.immutable.Map[Char,Int] = Map(d -> 1, a -> 1, r -> 
-                                                  //| 3, l -> 1)
-  val mapy = mapper(y)                            //> mapy  : scala.collection.immutable.Map[Char,Int] = Map(r -> 1)
+  val mapx = mapper(x)
+  val mapy = mapper(y)
 
 	def occMapper(occ: Occurrences, m: (Char, Int)): Occurrences =
 		(m._1, m._2 - mapy.getOrElse(m._1, 0)) :: occ
-                                                  //> occMapper: (occ: scala.week06.Sheet_Map_Varies.Occurrences, m: (Char, Int))s
-                                                  //| cala.week06.Sheet_Map_Varies.Occurrences
    def uncombine(occ: Occurrences): Occurrences =
    	for {
    		t <- occ
    		i <-1 to t._2
-   	} yield (t._1, i)                         //> uncombine: (occ: scala.week06.Sheet_Map_Varies.Occurrences)scala.week06.Shee
-                                                  //| t_Map_Varies.Occurrences
+   	} yield (t._1, i)
    	
    	
    	//occ map (t => (1 to t._2) flatMap (i => (t._1, i)) )
    	
   
   uncombine(mapx.foldLeft[Occurrences](List())(occMapper))
-                                                  //> res0: scala.week06.Sheet_Map_Varies.Occurrences = List((l,1), (r,1), (r,2), 
-                                                  //| (a,1), (d,1))
 
   //mapx.updated(key, value)
   //mapx.applyOrElse(x, default)
