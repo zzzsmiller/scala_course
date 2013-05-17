@@ -4,7 +4,7 @@ object Sheet_Map_Varies {
 
   type Occurrences = List[(Char, Int)]
 
-  val x = List(('a', 1), ('d', 1), ('r', 2), ('l', 1), ('r', 1), ('r', 3))
+  val x = List(('a', 1), ('d', 1), ('r', 2), ('l', 1), ('r', 1), ('r', 3));
                                                   //> x  : List[(Char, Int)] = List((a,1), (d,1), (r,2), (l,1), (r,1), (r,3))
   val y = List(('r', 1))                          //> y  : List[(Char, Int)] = List((r,1))
 
