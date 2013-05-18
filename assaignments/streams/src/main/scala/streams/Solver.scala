@@ -32,7 +32,7 @@ trait Solver extends GameDef {
     val before = for (neighbor <- b.legalNeighbors)
       yield (neighbor._1, neighbor._2 :: history)
     before.toStream
-//    TODO: have to be verified
+    //    TODO: have to be verified
   }
 
   /**
@@ -77,7 +77,38 @@ trait Solver extends GameDef {
    * construct the correctly sorted stream.
    */
   def from(initial: Stream[(Block, List[Move])],
-    explored: Set[Block]): Stream[(Block, List[Move])] = ???
+    explored: Set[Block]): Stream[(Block, List[Move])] = {
+
+    val neigbors = newNeighborsOnly(initial, explored)
+    if (neigbors.isEmpty) initial
+    else {
+      val exploredList = explored.toList
+      
+      neigbors foldLeft(explored.toList)((t: (Block, List[Move]), expList: List[Block]) => t._1 :: expList)
+      
+      /*val exploredSet = (
+          
+        for (neigbor <- neigbors)
+          yield neigbor._1)
+          val dd =  explored.++(exploredSet) 
+      initial :: from(neigbors, exploredSet)
+      */
+      
+    }
+    /*val finishStream = initial.filter(_._1.equals(goalBlock))
+	val goOnStream = initial.filterNot(_._1.equals(goalBlock))
+	if (goOnStream.isEmpty) finishStreamf
+	else {
+		val neigb = newNeighborsOnly(goOnStream, explored)
+	finishStream #:: from(neigb,)
+	  
+	}
+	
+*/
+    //   stub
+    println("stub result")
+    Stream.Empty
+  }
 
   /**
    * The stream of all paths that begin at the starting block.

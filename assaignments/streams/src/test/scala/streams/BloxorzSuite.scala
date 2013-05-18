@@ -89,4 +89,20 @@ class BloxorzSuite extends FunSuite {
           (Block(Pos(2, 1), Pos(3, 1)), List(Down, Left, Up))))
     }
   }
+
+  test("only new neighbors with history") {
+    new Level1 {
+      val n1 = newNeighborsOnly(
+        Set(
+          (Block(Pos(1, 2), Pos(1, 3)), List(Right, Left, Up)),
+          (Block(Pos(2, 1), Pos(3, 1)), List(Down, Left, Up))).toStream,
+
+        Set(Block(Pos(1, 2), Pos(1, 3)), Block(Pos(1, 1), Pos(1, 1)))).toSet
+
+      val n2 = Set(
+        (Block(Pos(2, 1), Pos(3, 1)), List(Down, Left, Up)))
+
+      assert(n1 == n2)	
+    }
+  }
 }

@@ -85,6 +85,11 @@ trait GameDef {
   def startBlock: Block = Block(startPos, startPos)
 
   /**
+   * Goal block
+   */
+  def goalBlock: Block = Block(goal, goal)
+
+  /**
    * A block is represented by the position of the two cubes that
    * it consists of. We make sure that `b1` is lexicographically
    * smaller than `b2`.
@@ -156,6 +161,9 @@ trait GameDef {
      * Returns `true` if the block is entirely inside the terrain.
      */
     def isLegal: Boolean = terrain(b1) && { if (isStanding) true else terrain(b2) }
+
+    def equals(other: Block) = b1.x == other.b1.x && b1.y == other.b1.y && 
+    		b2.x == other.b2.x && b2.y == other.b2.y
 
   }
 }
