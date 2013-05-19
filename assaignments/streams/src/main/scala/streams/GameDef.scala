@@ -1,6 +1,7 @@
 package streams
 
 import common._
+import scala.language.postfixOps
 
 /**
  * This trait represents the layout and building blocks of the game
@@ -150,7 +151,7 @@ trait GameDef {
      * Returns the list of positions reachable from the current block
      * which are inside the terrain.
      */
-    def legalNeighbors: List[(Block, Move)] = neighbors filter (t => t._1 isLegal)
+    def legalNeighbors: List[(Block, Move)] = neighbors filter (_._1 isLegal)
 
     /**
      * Returns `true` if the block is standing.
@@ -160,9 +161,9 @@ trait GameDef {
     /**
      * Returns `true` if the block is entirely inside the terrain.
      */
-    def isLegal: Boolean = terrain(b1) && { if (isStanding) true else terrain(b2) }
+    def isLegal: Boolean = terrain(b1) && (isStanding || terrain(b2))
 
-    def equals(other: Block) = b1.x == other.b1.x && b1.y == other.b1.y && 
+    def isEqual(other: Block) = b1.x == other.b1.x && b1.y == other.b1.y && 
     		b2.x == other.b2.x && b2.y == other.b2.y
 
   }

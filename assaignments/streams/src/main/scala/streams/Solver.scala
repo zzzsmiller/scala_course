@@ -97,7 +97,7 @@ trait Solver extends GameDef {
    * with the history how it was reached.
    */
   lazy val pathsToGoal: Stream[(Block, List[Move])] = 
-    pathsFromStart filter (_._1.equals(goalBlock))
+    pathsFromStart filter (_._1.isEqual(goalBlock))
 
   /**
    * The (or one of the) shortest sequence(s) of moves to reach the
