@@ -132,14 +132,5 @@ class ListsSuite extends FunSuite {
   
   test("max of negatives number") {
     assert(max(List(-4, -6, -2)) === -2)
-  }
-  
-  test("max of empty list") {
-    assert(max(List()) === 0)
-  }
-  
-  test("null arg in functions") {
-    assert(sum(null) === 0)
-    assert(max(null) === 0)
-  }
+  }	
 }
