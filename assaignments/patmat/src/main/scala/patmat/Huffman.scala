@@ -78,16 +78,16 @@ object Huffman {
     else {
       def matcher(ch: Char, l: List[Char]): (Int, List[Char]) = {
         if (l.isEmpty) (0, Nil)
-        else if (ch == l.head) {
-          val res = matcher(ch, l.tail)
+        else if (ch.toLower == l.head.toLower) {
+          val res = matcher(ch.toLower, l.tail)
           (1 + res._1, res._2)
         } else {
-          val res = matcher(ch, l.tail)
-          (res._1, l.head :: res._2)
+          val res = matcher(ch.toLower, l.tail)
+          (res._1, l.head.toLower :: res._2)
         }
       }
       val res = matcher(chars.head, chars)
-      (chars.head, res._1) :: times(res._2)
+      (chars.head.toLower, res._1) :: times(res._2)
     }
   }
 
@@ -169,7 +169,8 @@ object Huffman {
    * The parameter `chars` is an arbitrary text. This function extracts the character
    * frequencies from that text and creates a code tree based on them.
    */
-  def createCodeTree(chars: List[Char]): CodeTree = until(singleton, combine)(makeOrderedLeafList(times(chars))).head
+  def createCodeTree(chars: List[Char]): CodeTree = 
+    until(singleton, combine)(makeOrderedLeafList(times(chars))).head
 
   // Part 3: Decoding
 
@@ -228,7 +229,7 @@ object Huffman {
    */
   def encode(tree: CodeTree)(text: List[Char]): List[Bit] = tree match {
     case Fork(l, r, chs, w) => {
-      if (!chs.contains(text.head)) throw new Exception(text.head + " is not in code tree")
+      if (!chs.contains(text.head.toLower)) throw new Exception(text.head + " is not in code tree")
       def encHelper(subTree: CodeTree)(text: List[Char], code: List[Bit]): List[Bit] =
         subTree match {
           case Leaf(ch, w) =>
@@ -245,14 +246,14 @@ object Huffman {
               encHelper(r)(text, encHelper(l)(text, code ::: List(0)) ::: List(1))
           }
         }
-      encHelper(tree)(text, Nil)
+      encHelper(tree)(text map (_.toLower), Nil)
     }
     case Leaf(ch, w) => {
       def addBit(text: List[Char]): List[Bit] = {
         if (text.isEmpty) Nil
         else List(0) ::: addBit(text.tail)
       }
-      addBit(text)
+      addBit(text map (_.toLower))
     }
   }
 
@@ -307,6 +308,6 @@ object Huffman {
       else if (subCt.head._1 == text.head) subCt.head._2 ::: encodeLetter(ct)(text.tail)
       else encodeLetter(subCt.tail)(text)
     }
-    encodeLetter(ct)(text)
+    encodeLetter(ct)(text map (_.toLower))
   }
 }
